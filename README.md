@@ -1,5 +1,6 @@
 # Data-Engineering-Lab
 ## 学习目标：
+- [ ] 熟练使用大数据工具
 - [ ] 掌握 SQL 高级分析功能（窗口函数、CTE）
 - [ ] 熟练使用 Python 进行数据清洗（Pandas/PySpark）
 - [ ] 完成离线数仓项目

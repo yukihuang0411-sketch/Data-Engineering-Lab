@@ -1,4 +1,4 @@
-## 常用知识
+# 常用知识
 ## 1.整体启动/停止
 `start-dfs.sh(yarn.sh)`/`stop-dfs.sh(yarn.sh)`
 ## 2.各个服务组逐一启动/停止
@@ -35,15 +35,19 @@ case $1 in
  echo "Input Args Error..."
 ;;
 esac
+```
 （保存退出后记得赋予脚本执行权限
 chmod 777 myhadoop.sh )
+
 ## 4.同时查看三台服务器java进程脚本：jpsall
+```bash
 #!/bin/bash
 for host in hadoop102 hadoop103 hadoop104
 do
  echo =============== $host ===============
  ssh $host jps 
 done
+```
 （保存退出后记得赋予脚本执行权限
 chmod 777 jpsall )
 ## 5.常用端口号说明

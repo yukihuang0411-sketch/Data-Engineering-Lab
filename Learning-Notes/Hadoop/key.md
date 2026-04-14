@@ -52,6 +52,7 @@ done
 chmod 777 jpsall )
 ## 5.常用端口号说明
 <img width="890" height="330" alt="image" src="https://github.com/user-attachments/assets/485da2b9-01e9-476d-8a95-bea17cd9dc28" />
+
 ## 6.常用配置文件
 - **3.x**：core-site.xml  hdfs-site.xml  mapred-site.xml yarn-site.xml workers
 - **2.x**: core-site.xml  hdfs-site.xml  mapred-site.xml yarn-site.xml slaves

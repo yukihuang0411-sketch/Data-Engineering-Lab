@@ -27,3 +27,20 @@ dn2，然后 dn2 调用 dn3，将这个通信管道建立完成。
 来做校验）。
 4. 客户端以 Packet 为单位接收，先在本地缓存，然后写入目标文件。
 
+## HDFS NN与2NN的工作机制
+<img width="1079" height="542" alt="image" src="https://github.com/user-attachments/assets/071a290c-7001-4931-af8d-5de96ef1f95d" />
+
+1. 第一阶段：NameNode 启动
+（1）第一次启动 NameNode 格式化后，创建 Fsimage 和 Edits 文件。如果不是第一次启动，直接加载编辑日志和镜像文件到内存。
+（2）客户端对元数据进行增删改的请求。
+（3）NameNode 记录操作日志，更新滚动日志。
+（4）NameNode 在内存中对元数据进行增删改。
+3. 第二阶段：Secondary NameNode 工作
+（1）Secondary NameNode 询问 NameNode 是否需要 CheckPoint。直接带回 NameNode是否检查结果。
+（2）Secondary NameNode 请求执行 CheckPoint。
+（3）NameNode 滚动正在写的 Edits 日志。
+（4）将滚动前的编辑日志和镜像文件拷贝到 Secondary NameNode。
+（5）Secondary NameNode 加载编辑日志和镜像文件到内存，并合并。
+（6）生成新的镜像文件 fsimage.chkpoint。
+（7）拷贝 fsimage.chkpoint 到 NameNode。
+（8）NameNode 将 fsimage.chkpoint 重新命名成 fsimage。
